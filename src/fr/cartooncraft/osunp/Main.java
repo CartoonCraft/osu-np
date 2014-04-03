@@ -1,5 +1,6 @@
 package fr.cartooncraft.osunp;
 
+import java.awt.Color;
 import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;
@@ -8,6 +9,9 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import javax.swing.JFileChooser;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
 
 public class Main {
 
@@ -25,8 +29,25 @@ public class Main {
 		if(path == "")
 			path = new JFileChooser().getFileSystemView().getDefaultDirectory().toString()+"\\osunp.txt";
 		
+		JFrame frame = new JFrame();
+		frame.setTitle("osu! - Now Playing");
+		frame.setSize(1280, 100);
+		frame.setLocationRelativeTo(null);
+		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		
+		JPanel panel = new JPanel();
+		panel.setBackground(Color.green);
+		
+		JLabel label = new JLabel();
+		panel.add(label);
+		
+		frame.setContentPane(panel);
+		frame.setVisible(true);
+		
 		while(true) {
-			System.out.println(np(path));
+			String s = np(path);
+			// Refresh window
+			label.setText(s);
 			try {
 				Thread.currentThread();
 				Thread.sleep(500);
