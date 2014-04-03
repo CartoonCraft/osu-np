@@ -1,6 +1,7 @@
 package fr.cartooncraft.osunp;
 
 import java.awt.Color;
+import java.awt.Font;
 import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;
@@ -39,6 +40,11 @@ public class Main {
 		panel.setBackground(Color.green);
 		
 		JLabel label = new JLabel();
+		Font font = new Font("Arial Bold", 64, 32);
+		label.setFont(font);
+		label.setForeground(Color.WHITE);
+		label.setHorizontalAlignment(JLabel.CENTER);
+		label.setVerticalAlignment(JLabel.CENTER);
 		panel.add(label);
 		
 		frame.setContentPane(panel);
@@ -65,7 +71,7 @@ public class Main {
 		
 		Matcher m = p.matcher(osuName);
 		if(m.matches()) {	
-			String musicName = m.group(1)+"                                         ";
+			String musicName = m.group(1);
 			File file = new File(path);
 			BufferedWriter writer;
 			try {
